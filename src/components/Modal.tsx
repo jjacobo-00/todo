@@ -1,10 +1,10 @@
 interface Props {
-  setShowModal: () => void;
-  title: () => void;
-  setTitle: () => void;
-  description: () => void;
-  setDescription: () => void;
-  updateToDo: () => void;
+  setShowModal: (bool: boolean) => void;
+  title: () => string;
+  setTitle: (e: React.ChangeEvent<HTMLInputElement>) => string;
+  description: () => string;
+  setDescription: () => string;
+  updateToDo: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
 function Modal({

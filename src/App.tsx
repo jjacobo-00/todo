@@ -7,16 +7,6 @@ import React from "react";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
-function messageBox(title: string, text: string, icon: string) {
-  const mySwal = withReactContent(Swal);
-
-  void mySwal.fire({
-    title: title,
-    text: text,
-    icon: icon,
-  });
-}
-
 function App() {
   const [data, setData] = useState({});
   const [list, setList] = useState<unknown[]>([]);
@@ -54,9 +44,9 @@ function App() {
     });
   };
 
-  const handleRemove = (index: string) => {
+  const handleRemove = (index: number) => {
     // setList((current) => current.filter((list) => list.title !== title)); //Other Approach  - Remove by Title
-    mySwal
+    void mySwal
       .fire({
         title: "Remove?",
         text: "",
@@ -71,7 +61,13 @@ function App() {
       });
   };
 
-  const handleEdit = (data, index: string) => {
+  const handleEdit = (
+    data: {
+      title: React.SetStateAction<undefined>;
+      description: React.SetStateAction<undefined>;
+    },
+    index: number
+  ) => {
     setIdEdit(index);
     setShowModal(true);
     setTitle(data.title);

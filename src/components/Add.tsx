@@ -1,5 +1,5 @@
 interface Props {
-  handleChange: () => void;
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   addToDo: () => void;
 }
 
@@ -13,10 +13,7 @@ function Add({ addToDo, handleChange }: Props) {
         <p className="text-3xl font-bold mt-32">TO-DO</p>
         <div className="flex flex-wrap">
           <div className="w-full px-3 m-5">
-            <label
-              className="block uppercase tracking-wide text-black text-md font-bold mb-2 text-left"
-              for="title"
-            >
+            <label className="block uppercase tracking-wide text-black text-md font-bold mb-2 text-left">
               Title
             </label>
             <input
@@ -31,10 +28,7 @@ function Add({ addToDo, handleChange }: Props) {
         </div>
         <div className="flex flex-wrap mb-6">
           <div className="w-full px-3 m-5">
-            <label
-              className="block uppercase tracking-wide text-black text-md font-bold mb-2 text-left"
-              for="description"
-            >
+            <label className="block uppercase tracking-wide text-black text-md font-bold mb-2 text-left">
               Description
             </label>
             <textarea

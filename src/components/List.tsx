@@ -1,7 +1,12 @@
+type List = {
+  title: string;
+  description: string;
+};
+
 interface Props {
-  list: () => [];
-  handleRemove: (index: string) => void;
-  handleEdit: (index: string) => void;
+  list: () => List[];
+  handleRemove: (index: number) => void;
+  handleEdit: (index: number) => void;
   seletcedData: () => void;
 }
 
@@ -24,7 +29,7 @@ function List({ list, handleRemove, handleEdit }: Props) {
             </div>
           </div>
 
-          {list.map((todo, index) => {
+          {list.map((todo: [], index: number) => {
             return (
               <div className="card bg-white mt-10 mx-28 rounded-lg" key={index}>
                 <div className="grid grid-flow-row-dense grid-cols-6">
