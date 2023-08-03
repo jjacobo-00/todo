@@ -9,11 +9,11 @@ import withReactContent from "sweetalert2-react-content";
 
 function App() {
   const [data, setData] = useState({});
-  const [list, setList] = useState<unknown[]>([]);
-  const [idEdit, setIdEdit] = useState(-1);
-  const [showModal, setShowModal] = React.useState(false);
-  const [title, setTitle] = useState();
-  const [description, setDescription] = useState();
+  const [list, setList] = useState<List[]>([]);
+  const [idEdit, setIdEdit] = useState<number>(-1);
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [title, setTitle] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
 
   const mySwal = withReactContent(Swal);
 
@@ -28,16 +28,30 @@ function App() {
     e.target.reset();
   };
 
-  function updateToDo(e: { preventDefault: () => void }) {
+  function updateToDo(e: React.FormEvent) {
     e.preventDefault();
     setShowModal(false);
+
     const updatedData = [...list];
-    updatedData[idEdit].title = title;
-    updatedData[idEdit].description = description;
+    updatedData[idEdit] = {
+      ...updatedData[idEdit],
+      title: title,
+      description: description,
+    };
+
     setList(updatedData);
   }
 
   const handleChange = (e: { target: { name: string; value: string } }) => {
+    setData({
+      ...data,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleChangeTextArea = (e: {
+    target: { name: string; value: string };
+  }) => {
     setData({
       ...data,
       [e.target.name]: e.target.value,
@@ -61,42 +75,40 @@ function App() {
       });
   };
 
-  const handleEdit = (
-    data: {
-      title: React.SetStateAction<undefined>;
-      description: React.SetStateAction<undefined>;
-    },
-    index: number
-  ) => {
+  const handleEdit = (data: List, index: number) => {
+    // Specify the type for data
     setIdEdit(index);
     setShowModal(true);
     setTitle(data.title);
     setDescription(data.description);
   };
+
   return (
-    <>
-      <div className="container mx-auto m-0 bg-black min-h-screen max-w-full">
-        <div className="grid grid-cols-12 font-mono  text-center h-[100vh] antialiased ">
-          <List
-            list={list}
-            handleRemove={handleRemove}
-            handleEdit={handleEdit}
-            handleChange={handleChange}
+    <div className="container mx-auto m-0 bg-black min-h-screen max-w-full">
+      <div className="grid grid-cols-12 font-mono  text-center h-[100vh] antialiased ">
+        <List
+          list={list}
+          handleRemove={handleRemove}
+          handleEdit={handleEdit}
+          handleChange={handleChange}
+        />
+        <Add
+          addToDo={addToDo}
+          handleChange={handleChange}
+          handleChangeTextArea={handleChangeTextArea}
+        />
+        {showModal ? (
+          <Modal
+            setShowModal={setShowModal}
+            title={title}
+            setTitle={setTitle}
+            description={description}
+            setDescription={setDescription}
+            updateToDo={updateToDo}
           />
-          <Add data={data} addToDo={addToDo} handleChange={handleChange} />
-          {showModal ? (
-            <Modal
-              setShowModal={setShowModal}
-              title={title}
-              setTitle={setTitle}
-              description={description}
-              setDescription={setDescription}
-              updateToDo={updateToDo}
-            />
-          ) : null}
-        </div>
+        ) : null}
       </div>
-    </>
+    </div>
   );
 }
 
