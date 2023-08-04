@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
 function App() {
-  const [data, setData] = useState({});
+  const [data, setData] = useState<List>({ title: "", description: "" });
   const [list, setList] = useState<List[]>([]);
   const [idEdit, setIdEdit] = useState<number>(-1);
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -17,15 +17,19 @@ function App() {
 
   const mySwal = withReactContent(Swal);
 
-  const addToDo = (e: {
-    preventDefault: () => void;
-    target: { reset: () => void };
-  }) => {
+  const addToDo = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const show = [...list, data];
-    setList(show);
-    e.target.reset();
+    const newData: List = {
+      // Specify the correct type here
+      title: data.title,
+      description: data.description,
+    };
+
+    const updatedList = [...list, newData];
+    setList(updatedList);
+
+    e.currentTarget.reset(); // Using currentTarget instead of target
   };
 
   function updateToDo(e: React.FormEvent) {
@@ -86,12 +90,7 @@ function App() {
   return (
     <div className="container mx-auto m-0 bg-black min-h-screen max-w-full">
       <div className="grid grid-cols-12 font-mono  text-center h-[100vh] antialiased ">
-        <List
-          list={list}
-          handleRemove={handleRemove}
-          handleEdit={handleEdit}
-          handleChange={handleChange}
-        />
+        <List list={list} handleRemove={handleRemove} handleEdit={handleEdit} />
         <Add
           addToDo={addToDo}
           handleChange={handleChange}

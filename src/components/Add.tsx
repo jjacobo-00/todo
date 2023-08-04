@@ -1,10 +1,14 @@
 interface Props {
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  addToDo: () => void;
+  addToDo: (e: React.FormEvent<HTMLFormElement>) => void;
   handleChangeTextArea: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
-function Add({ addToDo, handleChange, handleChangeTextArea }: Props) {
+const Add: React.FC<Props> = ({
+  addToDo,
+  handleChange,
+  handleChangeTextArea,
+}) => {
   return (
     <>
       <form
@@ -72,6 +76,6 @@ function Add({ addToDo, handleChange, handleChangeTextArea }: Props) {
       </form>
     </>
   );
-}
+};
 
 export default Add;
