@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@media screen and (max-width: 1324px) {
+    .container-list {
+        // background-color: red;
+
+        .title {
+            padding: 0 1.2rem;
+        }
+
+        .description {
+            padding: 0 1.3rem;
+        }
+
+        .list-text {
+            display: none;
+        }
+
+        .list-button {
+            height: 38px;
+        }
+    }
+}
