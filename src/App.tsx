@@ -3,6 +3,7 @@ import List from "./components/List";
 import Add from "./components/Add";
 import Modal from "./components/Modal";
 import React from "react";
+import "./app.scss";
 
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";

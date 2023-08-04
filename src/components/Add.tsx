@@ -13,11 +13,13 @@ const Add: React.FC<Props> = ({
     <>
       <form
         onSubmit={addToDo}
-        className="col-span-4 max-h-screen border-l-2 border-white bg-white text-black"
+        className="col-span-12 sm:col-span-12 md:col-span-12 lg:col-span-4 xl:col-span-4 2xl:col-span-4 3xl:col-span-4 max-h-screen border-l-2 border-white bg-white text-black"
       >
-        <p className="text-3xl font-bold mt-32">TO-DO</p>
+        <p className="text-2xl lg:text-3xl font-bold mt-7 lg:mt-32 xl:mt-32 2xl:mt-32 3xl:mt-32">
+          TO-DO
+        </p>
         <div className="flex flex-wrap">
-          <div className="w-full px-3 m-5">
+          <div className="w-full px-3 mx-5 lg:m-5 xl:m-5 2xl:m-5 3xl:m-5">
             <label className="block uppercase tracking-wide text-black text-md font-bold mb-2 text-left">
               Title
             </label>
@@ -31,7 +33,7 @@ const Add: React.FC<Props> = ({
             />
           </div>
         </div>
-        <div className="flex flex-wrap mb-6">
+        <div className="flex flex-wrap lg:mb-3 xl:mb-3 2xl:mb-3 3xl:mb-3">
           <div className="w-full px-3 m-5">
             <label className="block uppercase tracking-wide text-black text-md font-bold mb-2 text-left">
               Description
@@ -47,13 +49,13 @@ const Add: React.FC<Props> = ({
               className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:border-black focus:border-2"
               placeholder="Enter description"
             ></textarea>
-            <p className="text-md italic text-black">
+            <p className="text-md italic text-black text-xs sm:text-sm lg:text-sm">
               Make it as long and as crazy as you'd like
             </p>
           </div>
         </div>
         <div className="flex flex-wrap mb-6">
-          <div className="w-full px-3 m-5">
+          <div className="w-full px-3 lg:m-5 xl:m-5 2xl:m-5 3xl:m-5">
             <button className="flex justify-center bg-gray-700 hover:bg-black text-white font-bold py-2 px-4 items-center w-full rounded-full">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
