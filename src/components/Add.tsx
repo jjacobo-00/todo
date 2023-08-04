@@ -29,7 +29,7 @@ const Add: React.FC<Props> = ({
               className="appearance-none block w-full p-2.5 bg-gray-50 text-gray-700 border rounded-lg border-gray-300 py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-black focus:border-2"
               id="title"
               type="text"
-              placeholder="Enter Title"
+              placeholder="Enter Title "
             />
           </div>
         </div>
