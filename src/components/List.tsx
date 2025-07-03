@@ -18,7 +18,7 @@ function List({ list, handleRemove, handleEdit }: Props) {
           <div className="card bg-white mt-10 mx-4 sm:mx-20 md:mx-16 lg:mx-28 xl:mx-28 2xl:mx-28 3xl:mx-28 rounded-lg">
             <div className="grid grid-flow-row-dense">
               <div className="col-span-5">
-                <h5 className="mt-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white title">
+                <h5 className="mt-2 text-2xl font-bold tracking-tight text-gray-900 title">
                   How to add list in To-Do
                 </h5>
                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 description">
@@ -37,7 +37,7 @@ function List({ list, handleRemove, handleEdit }: Props) {
                 >
                   <div className="grid grid-flow-row-dense grid-cols-6">
                     <div className="col-span-5">
-                      <h5 className="mt-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white title">
+                      <h5 className="mt-2 text-2xl font-bold tracking-tight text-gray-900 title">
                         {todo.title}
                       </h5>
                       <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 description">
